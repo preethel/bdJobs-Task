@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>User Data Management</title>
+    <title>Employee Management System</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -10,22 +10,36 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
     />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div class="container mt-4">
-      <h1>User Data Management</h1>
-      <form id="userDataForm">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            required
-            minlength="2"
-            maxlength="20"
-          />
-          <div class="invalid-feedback">Please enter minimum 2 letter.</div>
+    <div class="container col-md-5 content">
+      <h3 class="text-center">Employee Management System</h3>
+      <hr />
+      <form id="userDataForm" onsubmit="submitEmployee(event)">
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="name">First Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fname"
+              required
+              minlength="2"
+              maxlength="20"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="name">Last Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lname"
+              required
+              minlength="2"
+              maxlength="20"
+            />
+          </div>
         </div>
         <div class="form-group">
           <label for="address">Address:</label>
@@ -37,21 +51,10 @@
             minlength="2"
             maxlength="100"
           />
-          <div class="invalid-feedback">Please enter a 2-letter address.</div>
         </div>
         <div class="form-group">
           <label for="email">Email:</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            required
-            pattern=".+@.{3,}"
-          />
-          <div class="invalid-feedback">
-            Please enter a valid email address with at least 3 characters after
-            the @ symbol.
-          </div>
+          <input type="text" class="form-control" id="email" required />
         </div>
         <div class="form-group">
           <label for="mobile">Mobile No.:</label>
@@ -60,20 +63,21 @@
             class="form-control"
             id="mobile"
             required
-            pattern="01[0-9]{9}"
             maxlength="11"
           />
-          <div class="invalid-feedback">
-            Please enter a valid 11-digit mobile number starting with 01.
-          </div>
         </div>
         <div class="form-group">
-          <label for="dob">Date of Birth:</label>
-          <input type="date" class="form-control" id="dob" required />
-          <div class="invalid-feedback">
-            Please enter a valid date of birth in the format dd-mm-yyyy.
-          </div>
+          <label for="dob">Date of Birth</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dob"
+            placeholder="dd/mm/yyyy"
+            pattern="\d{2}/\d{2}/\d{4}"
+            required
+          />
         </div>
+
         <div class="form-group">
           <label for="password">Password:</label>
           <input type="password" class="form-control" id="password" required />
@@ -86,11 +90,22 @@
             id="repassword"
             required
           />
-          <div class="invalid-feedback">Passwords do not match.</div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          style="background-color: #4e4e50; border: #4e4e50"
+        >
+          Submit
+        </button>
       </form>
-      <table id="userDataTable" class="table mt-4">
+    </div>
+    <div class="container col-md-6 content center">
+      <h2 class="text-center">Employee List</h2>
+      <table
+        id="userDataTable"
+        class="table mt-4 text-center center table-responsive"
+      >
         <thead>
           <tr>
             <th>Name</th>
